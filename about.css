@@ -1,0 +1,292 @@
+:root{
+    --primary-color: #007DC5;
+    --second-color:#FEDB01;
+    --third-color:#000000;
+}
+
+
+body {
+    background-color: white;
+}
+.banner {
+    position: relative;
+    width: 100%;
+    margin: auto;
+}
+
+.banner-image {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin-top: 112px;
+}
+
+.banner-image img {
+    width: 100%;
+    height: 50vh;
+    display: block;
+}
+
+.banner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    width: 80%;
+    z-index: 2; /* S'assure que le texte est au-dessus */
+}
+
+/* Ajout d'un pseudo-élément pour assombrir l'image et améliorer la lisibilité du texte */
+.banner-image::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Assombrissement de l'image */
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    /*height: 100vh;*/
+    padding: 20px;
+    flex-direction: row;
+}
+
+/* 📌 Partie gauche : Vidéo + Background */
+.left {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Évite tout débordement */
+}
+
+/* Background SVG */
+.background-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+/* Style de la vidéo */
+.video-container {
+    position: relative;
+    width: 80%;
+    max-width: 600px;
+    height: auto;
+    aspect-ratio: 16/9;
+    z-index: 2; /* La vidéo est au-dessus */
+}
+
+/* 📌 Partie droite : Texte */
+.right {
+    width: 50%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    background: white; /* Légère couleur de fond */
+    border-radius: 10px;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.title span {
+    color: var(--primary-color) /* Accent color */
+}
+
+.description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* 📌 Design des Cards */
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex: 1 1 calc(50% - 20px);
+    min-width: 280px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+ul li strong {
+    color: #222;
+}
+
+.card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+
+.more-information {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Deux colonnes égales */
+    gap: 0; /* Pas d'espace entre les cards */
+    width: 100%;
+    /*max-width: 1200px;*/
+    margin: auto;
+    overflow: hidden;
+    padding: 24px;
+}
+
+/* Styles pour les cartes de texte */
+.info-card.text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    background: #f5f5f5;
+    text-align: left;
+}
+
+/* Styles pour les cartes d'image */
+.info-card.image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.info-card.image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.title-service {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #3674b5;
+    padding: 24px;
+}
+
+.title-service h2 {
+    border-bottom: 3px solid var(--primary-color);
+    text-align: center;
+}
+
+
+/* 📱 Mode Mobile : une colonne, vidéo en haut */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .left, .right {
+        width: 100%;
+    }
+
+    .background-svg {
+        width: 100%;
+        height: auto;
+        left: 50%;
+        transform: translateX(-50%); /* Centre l'image */
+    }
+
+    .right {
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+    }
+    
+    .cards-container {
+        flex-direction: column;
+    }
+    
+    .card {
+        flex: 1 1 100%;
+    }
+
+
+    .info-card.image img {
+        height: 100%;
+    }
+
+    .more-information {
+        display: none;
+    }
+
+    /* Afficher la version mobile */
+    .mobile-only {
+        display: flex;
+        flex-direction: column;
+        padding: 32px;
+    }
+
+    .mobile-only .info-card {
+        width: 100%;
+    }
+
+    .mobile-only .info-card.image img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .mobile-only .info-card.text {
+        text-align: center;
+        padding: 16px;
+    }
+}
+@media (min-width: 769px) {
+    .mobile-only {
+        display: none;
+    }
+}
